@@ -1,19 +1,32 @@
-import Navbar from '../Navbar';
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const App = (props) => (
-	<div className="container-fluid">
-		<Navbar />
-		<div className="content">
-			{props.children}
-		</div>
-	</div>
-);
+import AppNavbarContainer from '../../Containers/AppNavbarContainer';
 
-App.PropTypes = {
-	children: React.PropTypes.object
-};
+export default class Entry extends Component {
+	static PropTypes = {
+		children: PropTypes.object,
 
-export default App;
+	}
+
+	constructor(props) {
+		super(props);
+
+		props.onCheckToken();
+	}
+
+	render() {
+		const { accountLevel, children, onReLogin } = this.props;
 
 
+		return accountLevel == -2? (
+				<a onClick={onReLogin}>請重新登入</a>
+			) : (
+				<div className="container-fluid">
+					<AppNavbarContainer />
+					<div className="content">
+						{children}
+					</div>
+				</div>
+			);
+	}
+}

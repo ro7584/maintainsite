@@ -3,7 +3,7 @@ import FormInput from '../form/input/input';
 import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
 
-export default class Profile extends React.Component {
+export class Edit extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -189,7 +189,7 @@ export default class Profile extends React.Component {
 						<HelpBlock>{this.state.confirmPwd.helpText}</HelpBlock>
 					</FormGroup>
 
-					<button type="submit" className="btn btn-primary">登入</button>
+					<button type="submit" className="btn btn-primary">送出</button>
 				</form>
 			</div>
 		);
